@@ -115,7 +115,7 @@
 -define:ROSLYN_ANALYZER_FIX
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"C:/Project Paper Plane/Paper Plane/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
+-r:"C:/Proyecto2023PaperPlane/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
 -r:"D:/Program Files/Unity Hub/Editor/2021.3.23f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"D:/Program Files/Unity Hub/Editor/2021.3.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"D:/Program Files/Unity Hub/Editor/2021.3.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -338,7 +338,6 @@
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/AssemblyNameProvider.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/FileIOProvider.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/GUIDProvider.cs"
-"Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/IAssemblyNameProvider.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/IFileIO.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/IGenerator.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/ProjectGeneration/IGUIDGenerator.cs"
@@ -366,7 +365,6 @@
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/Util/LibcNativeInterop.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/Util/RiderMenu.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/Util/RiderPathUtil.cs"
-"Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/Util/SerializableVersion.cs"
 "Library/PackageCache/com.unity.ide.rider@3.0.18/Rider/Editor/Util/StringUtils.cs"
 -langversion:9.0
 
