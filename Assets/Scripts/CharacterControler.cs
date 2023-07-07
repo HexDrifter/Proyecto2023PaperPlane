@@ -14,9 +14,11 @@ public class CharacterControler : MonoBehaviour
     // Update is called once per frame
     void ProcesarMovimiento()
     {
-        float inputMovimiento = Input.GetAxis("Horizontal");
+        float inputHorizontal = Input.GetAxis("Horizontal");
+        float inputVertical = Input.GetAxis("Vertical");
+
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
 
-        rigidbody.velocity = new Vector2(inputMovimiento * velocidad, rigidbody.velocity.y);
+        rigidbody.velocity = new Vector2(inputHorizontal * velocidad, inputVertical * velocidad);
     }
 }
