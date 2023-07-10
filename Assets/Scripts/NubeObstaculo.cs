@@ -51,4 +51,13 @@ public class NubeObstaculo : MonoBehaviour
             }
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "square")
+        {
+            // Cambiar la dirección del objeto
+            direccion = -direccion;
+        }
+    }
 }

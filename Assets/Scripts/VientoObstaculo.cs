@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class VientoObstaculo : MonoBehaviour
 {
-    public float velocidadRalentizada = 0.5f; // Factor de ralentización del jugador
+    public float velocidadRalentizada = -10; // Factor de ralentización del jugador
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (other.CompareTag("Player")) // Comprueba si el objeto que colisiona tiene la etiqueta "Player"
+        if (collision.CompareTag("Player")) // Comprueba si el objeto que colisiona tiene la etiqueta "Player"
         {
-            Ralentizar(other.gameObject);
+            Ralentizar(collision.gameObject);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.CompareTag("Player")) // Comprueba si el objeto ha dejado de colisionar con el jugador
+        if (collision.CompareTag("Player")) // Comprueba si el objeto ha dejado de colisionar con el jugador
         {
-            RestaurarVelocidad(other.gameObject);
+            RestaurarVelocidad(collision.gameObject);
         }
     }
 
