@@ -4,34 +4,49 @@ using UnityEngine;
 
 public class VientoObstaculo : MonoBehaviour
 {
-    public float velocidadRalentizada = -10; // Factor de ralentización del jugador
+    public float factorRalentizacion = 0.5f; // Factor de ralentización del jugador
+    private List<Rigidbody2D> jugadoresRalentizados = new List<Rigidbody2D>();
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player")) // Comprueba si el objeto que colisiona tiene la etiqueta "Player"
+        if (other.CompareTag("Player")) // Comprueba si el objeto que colisiona tiene la etiqueta "Player"
         {
-            Ralentizar(collision.gameObject);
+            Ralentizar(other.gameObject);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.CompareTag("Player")) // Comprueba si el objeto ha dejado de colisionar con el jugador
+        if (other.CompareTag("Player")) // Comprueba si el objeto ha dejado de colisionar con el jugador
         {
-            RestaurarVelocidad(collision.gameObject);
+            RestaurarVelocidad(other.gameObject);
         }
     }
 
     private void Ralentizar(GameObject jugador)
     {
-        Rigidbody2D rb = jugador.GetComponent<Rigidbody2D>();
-        rb.velocity *= velocidadRalentizada;
+        Rigidbody2D jugadorRigidbody = jugador.GetComponent<Rigidbody2D>();
+        if (!jugadoresRalentizados.Contains(jugadorRigidbody))
+        {
+            jugadoresRalentizados.Add(jugadorRigidbody);
+        }
     }
 
     private void RestaurarVelocidad(GameObject jugador)
     {
-        Rigidbody2D rb = jugador.GetComponent<Rigidbody2D>();
-        rb.velocity /= velocidadRalentizada;
+        Rigidbody2D jugadorRigidbody = jugador.GetComponent<Rigidbody2D>();
+        if (jugadoresRalentizados.Contains(jugadorRigidbody))
+        {
+            jugadoresRalentizados.Remove(jugadorRigidbody);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        foreach (Rigidbody2D jugadorRigidbody in jugadoresRalentizados)
+        {
+            Vector2 nuevaVelocidad = jugadorRigidbody.velocity * factorRalentizacion;
+            jugadorRigidbody.velocity = nuevaVelocidad;
+        }
     }
 }
-

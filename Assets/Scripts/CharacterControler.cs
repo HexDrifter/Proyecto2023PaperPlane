@@ -6,22 +6,19 @@ using UnityEngine;
 
 public class CharacterControler : MonoBehaviour
 {
-    [SerializeField] public float velocidad; 
+    public float velocidad; // Ahora la variable velocidad es pública para que pueda modificarse desde otros scripts
     [SerializeField] public CinemachineBrain brain;
     public Rigidbody2D rbody;
-    public Vector2 inputMove; //Hice la variable p�blica para ver el input
-
-
+    public Vector2 inputMove; // Hice la variable pública para ver el input
 
     public void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
         //brain = GetComponent<CinemachineBrain>();
     }
+
     void Update()
     {
-        
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             shotBullet();
@@ -32,7 +29,6 @@ public class CharacterControler : MonoBehaviour
     {
         ProcesarMovimiento();
         brain.ManualUpdate();
-        
     }
 
     private void shotBullet()
@@ -41,14 +37,11 @@ public class CharacterControler : MonoBehaviour
         //throw new NotImplementedException();
     }
 
-    // Update is called once per frame
     void ProcesarMovimiento()
     {
         inputMove.x = Input.GetAxis("Horizontal");
         inputMove.y = Input.GetAxis("Vertical");
 
         rbody.velocity = inputMove * velocidad;
-
-        //rbody.velocity = new Vector2(inputHorizontal * velocidad, inputVertical * velocidad);
     }
 }
