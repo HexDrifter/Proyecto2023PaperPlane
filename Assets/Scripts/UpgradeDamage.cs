@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeShoot : MonoBehaviour
 {
-    /*void upgradeShot(levelUpgradeShot)
+    void upgradeShot(levelUpgradeShot) 
     {
         if (levelUpgradeShot >= 0 && levelUpgradeShot <= 4)
         {
@@ -19,5 +19,5 @@ public class UpgradeShoot : MonoBehaviour
             BombDamage = damage + 5;
             levelUpgradeBomb+1;
         }
-    }*/
+    }
 }
