@@ -10,6 +10,7 @@ public class CharacterControler : MonoBehaviour
     [SerializeField] public CinemachineBrain brain;
     public Rigidbody2D rbody;
     public Vector2 inputMove; // Hice la variable pública para ver el input
+    public GameObject bullet;
 
     public void Start()
     {
@@ -34,6 +35,9 @@ public class CharacterControler : MonoBehaviour
     private void shotBullet()
     {
         Debug.Log("Bang");
+        Vector2 bulletPos = transform.position;
+        bulletPos.x += 0.1f;
+        Instantiate(bullet, bulletPos, Quaternion.identity);
         //throw new NotImplementedException();
     }
 
