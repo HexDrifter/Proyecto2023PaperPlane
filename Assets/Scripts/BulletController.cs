@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector2 bulletDirection;
+    public float bulletSpeed;
+    public float bulletDamage;
+
+    
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         
     }

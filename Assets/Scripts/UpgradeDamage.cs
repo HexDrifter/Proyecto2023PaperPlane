@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpgradeShoot : MonoBehaviour
 {
-    void upgradeShot(levelUpgradeShot)
+    void upgradeShot(levelUpgradeShot) 
     {
         if (levelUpgradeShot >= 0 && levelUpgradeShot <= 4)
         {
