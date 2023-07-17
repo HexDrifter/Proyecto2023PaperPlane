@@ -463,13 +463,13 @@ MonoBehaviour:
     roll: 0
   - position: {x: 20, y: 0, z: 0}
     roll: 0
-  - position: {x: 40, y: 1, z: 0}
+  - position: {x: 40, y: 0, z: 0}
     roll: 0
-  - position: {x: 60, y: 4, z: 0}
+  - position: {x: 60, y: 0, z: 0}
     roll: 0
-  - position: {x: 80, y: 3, z: 0}
+  - position: {x: 80, y: 0, z: 0}
     roll: 0
-  - position: {x: 100, y: 2, z: 0}
+  - position: {x: 310, y: 0, z: 0}
     roll: 0
 --- !u!1 &3094915750210236441
 GameObject:
