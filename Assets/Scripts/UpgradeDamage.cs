@@ -16,7 +16,7 @@ public class UpgradeShoot : MonoBehaviour
     {
         if (levelUpgradeBomb >= 0 && levelUpgradeBomb <= 4)
         {
-            BombDamage = damage + 5;
+            BombDamage = damage+5;
             levelUpgradeBomb+1;
         }
     }
