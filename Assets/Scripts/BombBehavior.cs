@@ -6,15 +6,15 @@ using UnityEngine;
 public class bombBehavior : Enemy
 {
     public int bombDamage = 100;
-    
     void useBomb()
     {
         
     }
-
-    if (Input.GetKey("ctrl"))
+    private void Update()
     {
-        useBomb();
+        if (Input.GetKey("ctrl"))
+        {
+            useBomb();
+        }
     }
-
 }
