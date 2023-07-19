@@ -15,10 +15,10 @@ public class bombBehavior : Enemy
         {
             if (collider.CompareTag("Enemy"))
             {
-                if ("enemyHealth" != null)
+                /*if ("enemyHealth" < 1)
                 {
-                    // Reducir la vida del enemigo
-                }
+                    //Reducir la vida del enemigo
+                }*/
             }
             if (collider.CompareTag("EnemyBullet"))
             {
