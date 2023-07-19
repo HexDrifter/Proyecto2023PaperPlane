@@ -7,28 +7,24 @@ public class bombBehavior : Enemy
 {
     public int bombDamage = 100;
 
-
     void useBomb()
     {
-        /*// Obtén todos los objetos en la escena con el tag "Enemy"
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale / 2, 0f, LayerMask.GetMask("Camera"));
 
-        // Itera sobre todos los enemigos y reduce su vida
-        foreach (GameObject enemy in enemies)
+        foreach (Collider2D collider in colliders)
         {
-            // Obtén una referencia al script de vida del enemigo
-            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-
-            // Reducir la vida del enemigo llamando a la función correspondiente en su script
-            if (enemyHealth != null)
+            if (collider.CompareTag("Enemy"))
             {
-                enemyHealth.TakeDamage(bombDamage);
+                if ("enemyHealth" != null)
+                {
+                    // Reducir la vida del enemigo
+                }
             }
-        }*/
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-
+            if (collider.CompareTag("EnemyBullet"))
+            {
+                Destroy(collider.gameObject);
+            }
+        }
     }
     private void Update()
     {
