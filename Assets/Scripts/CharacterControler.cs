@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class CharacterControler : MonoBehaviour
 {
-    public float velocidad; // Ahora la variable velocidad es pública para que pueda modificarse desde otros scripts
+    [SerializeField] public float velocidad; // Ahora la variable velocidad es pública para que pueda modificarse desde otros scripts
     [SerializeField] public CinemachineBrain brain;
-    public Rigidbody2D rbody;
-    public Vector2 inputMove; // Hice la variable pública para ver el input
-    public GameObject bullet;
+    [SerializeField] public Rigidbody2D rbody;
+    private Vector2 inputMove; // Hice la variable pública para ver el input
+    [SerializeField] public GameObject bulletObject;
+    [SerializeField] public int bulletDamage;
+    [SerializeField] public float bulletSpeed;
 
     public void Start()
     {
@@ -35,10 +37,16 @@ public class CharacterControler : MonoBehaviour
     private void shotBullet()
     {
         Debug.Log("Bang");
-        Vector2 bulletPos = transform.position;
-        bulletPos.x += 0.1f;
-        Instantiate(bullet, bulletPos, Quaternion.identity);
-        //throw new NotImplementedException();
+        Vector2 bulletPos;
+        bulletPos.x = transform.position.x + 1f;
+        bulletPos.y = transform.position.y;
+        Instantiate(bulletObject, bulletPos, Quaternion.identity);
+        //Vector2 bulletDirection;
+        //bulletDirection = new Vector2(1,0)
+
+        BulletController bullet = bulletObject.GetComponent<BulletController>();
+        bullet.launch(bulletSpeed, bulletDamage);
+
     }
 
     void ProcesarMovimiento()

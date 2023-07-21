@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstaculoSystem : MonoBehaviour
+public class ObstaculoSystem : Enemy
 {
     // Referencia al objeto que se autodestruirá
     public GameObject objetoAutodestruccion;
