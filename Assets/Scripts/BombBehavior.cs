@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class bombBehavior : Enemy
+public class bombBehavior : MonoBehaviour
 {
     public int bombDamage = 100;
     public int currentBombs = 3;
@@ -14,7 +14,7 @@ public class bombBehavior : Enemy
 
     void UseBomb()
     {
-        // Obtiene todos los colliders dentro de la zona con el tag "MainCamera"
+        // Obtiene todos los colliders dentro de la zona con el tag "MainCamera" y los almacena en la variable "targets"
         Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, transform.localScale / 2, 0f, LayerMask.GetMask("MainCamera"));
 
         foreach (Collider2D target in targets)
