@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
-    //public int damage;
-    // Start is called before the first frame update
+    [SerializeField] public int health;
+    
     public void getDamage(int damage)
     {
         health -= damage;
@@ -16,5 +15,12 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
+
 
 }

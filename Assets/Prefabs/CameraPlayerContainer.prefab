@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3094915749488555224}
   - component: {fileID: 3094915749488555044}
   - component: {fileID: 3094915749488555047}
+  - component: {fileID: 3878711688762805833}
   m_Layer: 0
   m_Name: MainCameraPrefab
   m_TagString: MainCamera
@@ -141,6 +142,21 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &3878711688762805833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094915749488555225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32ffc6122f7c4440959796b039a726f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  cameraOffset: 0
+  enemies: []
 --- !u!1 &3094915749616291415
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +262,10 @@ MonoBehaviour:
   bulletObject: {fileID: 1951696793135522100, guid: 151c1af5e6950a64fa14727f01187095, type: 3}
   bulletDamage: 25
   bulletSpeed: 5
+  bombDamage: 0
+  currentBombs: 0
+  maxBombs: 0
+  bombCooldownDuration: 0
 --- !u!50 &3094915749616291411
 Rigidbody2D:
   serializedVersion: 4

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoBalones : MonoBehaviour
+public class MovimientoBalones : Enemy
 {
-    public float moveSpeed = 5f; // Velocidad de movimiento horizontal
+    [SerializeField] public float moveSpeed = 5f; // Velocidad de movimiento horizontal
     public float jumpHeight = 2f; // Altura del salto (parábola)
     public bool izquierda = false; // Variable para controlar la dirección izquierda o derecha
 
@@ -18,6 +18,10 @@ public class MovimientoBalones : MonoBehaviour
     {
         initialPosition = transform.position;
         moveDirection = izquierda ? Vector2.left : Vector2.right;
+        /*
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = balonDireccion;
+        */
     }
 
     void Update()

@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyActivator : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] public Camera cam;
+    [SerializeField] public float cameraOffset;
+    public GameObject[] enemies;
+
+    private void Awake()
     {
-        if (other.CompareTag("MainCamera"))
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    }
+    private void Start()
+    {
+        cam = Camera.main;
+        
+
+    }
+
+    private void Update()
+    {
+        foreach (GameObject enemy in enemies)
         {
-            GameObject[] enemigos = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemigo in enemigos)
+            //Debug.Log("Cam Position: "+cam.transform.position.x+"Enemy Position: "+enemy.transform.position.x + "Enemy Name" + enemy.name);
+            
+            if((cam.transform.position.x + cameraOffset)> enemy.transform.position.x)
             {
-                enemigo.SetActive(true);
+                //Debug.Log(Camera.);
+                enemy.SetActive(true);
             }
         }
+
     }
+
 }
