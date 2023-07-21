@@ -6,23 +6,40 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] public Vector2 bulletDirection;
     public float bulletSpeed;
-    public float bulletDamage;
-    private Rigidbody2D rb;
+    public int bulletDamage;
+    public Rigidbody2D rb;
 
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5 );
+        Destroy(gameObject, 3);
     }
 
+    public void Update()
+    {
+        rb.velocity = bulletDirection * bulletSpeed ;
+    }
     public BulletController(Vector2 Direction)
     {
         bulletDirection = Direction;
     }
 
     // Update is called once per frame
-    public void Update()
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.velocity = transform.right * bulletDirection * 100;
+        Enemy enemy = collision.collider.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.getDamage(bulletDamage);
+        }
+        Destroy(gameObject);
+    }
+
+    public void launch(float speed, int damagePoints)
+    {
+        bulletDamage = damagePoints;
+        bulletSpeed = speed;
     }
 }
