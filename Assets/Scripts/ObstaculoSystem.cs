@@ -7,14 +7,11 @@ public class ObstaculoSystem : Enemy
     // Referencia al objeto que se autodestruirá
     public GameObject objetoAutodestruccion;
 
-    // Etiqueta del objeto jugador
-    public string etiquetaJugador = "player";
-
     // Método para verificar colisiones
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verificar si la etiqueta de colisión es la del jugador
-        if (collision.gameObject.CompareTag(etiquetaJugador))
+        // Verificar si el objeto colisionado tiene la etiqueta "Player" o el nombre "Square"
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.name == "Square")
         {
             // Destruir el objeto actual
             Destroy(objetoAutodestruccion);
