@@ -14,18 +14,22 @@ public class bombBehavior : Enemy
 
     void UseBomb()
     {
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale / 2, 0f, LayerMask.GetMask("MainCamera"));
+        // Obtiene todos los colliders dentro de la zona con el tag "MainCamera"
+        Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, transform.localScale / 2, 0f, LayerMask.GetMask("MainCamera"));
 
-        foreach (Collider2D collider in colliders)
+        foreach (Collider2D target in targets)
         {
-            if (collider.CompareTag("Enemy"))
+            if (target.CompareTag("Enemy"))
             {
-                Destroy(collider.gameObject); //Linea para testear
-                // Agregar una funcion para reducir la vida del enemigo
+                Enemy enemy = target.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.getDamage(bombDamage);
+                }
             }
-            if (collider.CompareTag("EnemyBullet"))
+            if (target.CompareTag("EnemyBullet"))
             {
-                Destroy(collider.gameObject);
+                Destroy(target.gameObject);
             }
         }
         currentBombs--;
