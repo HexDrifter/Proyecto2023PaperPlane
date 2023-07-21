@@ -13,6 +13,6 @@ public class balonbasket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, (float)(gameObject.transform.position.y + 0.1), gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, (float)(gameObject.transform.position.y + 0.05), gameObject.transform.position.z);
     }
 }
