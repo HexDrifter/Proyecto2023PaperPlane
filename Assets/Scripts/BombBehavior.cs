@@ -6,6 +6,11 @@ using UnityEngine;
 public class bombBehavior : Enemy
 {
     public int bombDamage = 100;
+    public int currentBombs = 3;
+    public int maxBombs = 3;
+    private bool isCooldown = false;
+    private float lastUsedTime = 0f;
+    private float cooldownDuration = 5f;
 
     void UseBomb()
     {
@@ -16,22 +21,29 @@ public class bombBehavior : Enemy
             if (collider.CompareTag("Enemy"))
             {
                 Destroy(collider.gameObject); //Linea para testear
-                /*if ("enemyHealth" < 1)
-                {
-                    //Reducir la vida del enemigo
-                }*/
+                // Agregar una funcion para reducir la vida del enemigo
             }
             if (collider.CompareTag("EnemyBullet"))
             {
                 Destroy(collider.gameObject);
             }
         }
+        currentBombs--;
+        //Cooldown para no spamear la bomba
+        isCooldown = true;
+        lastUsedTime = Time.time;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !isCooldown && currentBombs > 0)
         {
             UseBomb();
+        }
+
+        // Verifica si el cooldown ha terminado
+        if (isCooldown && Time.time - lastUsedTime >= cooldownDuration)
+        {
+            isCooldown = false;
         }
     }
 }
