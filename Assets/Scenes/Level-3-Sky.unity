@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 161762312}
   - component: {fileID: 161762313}
   m_Layer: 0
-  m_Name: square
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 1880433827}
   - component: {fileID: 1880433828}
   m_Layer: 0
-  m_Name: square
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 1896227276}
   - component: {fileID: 1896227277}
   m_Layer: 0
-  m_Name: square
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1217,7 +1217,7 @@ GameObject:
   - component: {fileID: 2033989276}
   - component: {fileID: 2033989277}
   m_Layer: 0
-  m_Name: square
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

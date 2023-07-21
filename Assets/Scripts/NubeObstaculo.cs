@@ -29,7 +29,7 @@ public class NubeObstaculo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "square")
+        if (collision.gameObject.name == "Square")
         {
             direccion = -direccion;
         }
