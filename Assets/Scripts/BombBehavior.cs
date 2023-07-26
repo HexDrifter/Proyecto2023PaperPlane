@@ -12,8 +12,25 @@ public class bombBehavior : MonoBehaviour
     private float lastUsedTime = 0f;
     private float cooldownDuration = 5f;
 
+    private List<Collider> collidersTargets = new List<Collider>();
+
+    // Método para agregar un collider a la lista
+    public void AgregarColliderEnemigo(Collider colliderTarget)
+    {
+        collidersTargets.Add(colliderTarget);
+    }
+
+    // Método para eliminar un collider de la lista
+    public void EliminarColliderEnemigo(Collider colliderTarget)
+    {
+        collidersTargets.Remove(colliderTarget);
+    }
+
+    // Otros métodos o funcionalidades que puedas necesitar
+
     void UseBomb()
     {
+        /*
         // Obtiene todos los colliders dentro de la zona con el tag "MainCamera" y los almacena en la variable "targets"
         Collider2D[] targets = Physics2D.OverlapBoxAll(transform.position, transform.localScale / 2, 0f, LayerMask.GetMask("MainCamera"));
 
@@ -31,7 +48,13 @@ public class bombBehavior : MonoBehaviour
             {
                 Destroy(target.gameObject);
             }
-        }
+        }*/
+
+
+
+
+
+
         currentBombs--;
         //Cooldown para no spamear la bomba
         isCooldown = true;
