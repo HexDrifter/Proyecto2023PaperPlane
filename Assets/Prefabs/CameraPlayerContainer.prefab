@@ -261,11 +261,13 @@ MonoBehaviour:
   rbody: {fileID: 0}
   bulletObject: {fileID: 1951696793135522100, guid: 151c1af5e6950a64fa14727f01187095, type: 3}
   bulletDamage: 25
-  bulletSpeed: 5
+  bulletSpeed: 1.02
   bombDamage: 0
   currentBombs: 0
   maxBombs: 0
   bombCooldownDuration: 0
+  shotCoolDown: 0.08
+  timeLeftShot: 0
 --- !u!50 &3094915749616291411
 Rigidbody2D:
   serializedVersion: 4

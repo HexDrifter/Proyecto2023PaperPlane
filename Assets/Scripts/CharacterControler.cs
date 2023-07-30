@@ -9,7 +9,7 @@ public class CharacterControler : MonoBehaviour
     [SerializeField] public float velocidad; // Ahora la variable velocidad es pública para que pueda modificarse desde otros scripts
     [SerializeField] public CinemachineBrain brain;
     [SerializeField] public Rigidbody2D rbody;
-    private Vector2 inputMove; // Hice la variable pública para ver el input
+    private Vector2 inputMove;
     [SerializeField] public GameObject bulletObject;
     [SerializeField] public int bulletDamage;
     [SerializeField] public float bulletSpeed;
@@ -19,6 +19,8 @@ public class CharacterControler : MonoBehaviour
     private bool isCooldown = false;
     private float lastUsedTime = 0f;
     [SerializeField] private float bombCooldownDuration;
+    [SerializeField] private float shotCoolDown;
+    [SerializeField] private float timeLeftShot;
 
     public void Start()
     {
@@ -30,7 +32,18 @@ public class CharacterControler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             shotBullet();
+            timeLeftShot = shotCoolDown;
+        }
+        else if (Input.GetKey(KeyCode.Space) && timeLeftShot <= 0)
+        {
+            shotBullet();
+            timeLeftShot = shotCoolDown;
+        }
+        else
+        {
+            timeLeftShot -= Time.deltaTime;
         }
         if (Input.GetKeyDown(KeyCode.LeftControl) && !isCooldown && currentBombs > 0)
         {
@@ -47,7 +60,7 @@ public class CharacterControler : MonoBehaviour
     private void FixedUpdate()
     {
         ProcesarMovimiento();
-        brain.ManualUpdate();
+        //brain.ManualUpdate();
     }
 
     private void shotBullet()
