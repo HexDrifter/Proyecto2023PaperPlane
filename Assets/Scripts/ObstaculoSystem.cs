@@ -14,7 +14,7 @@ public class ObstaculoSystem : Enemy
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.name == "Square")
         {
             // Destruir el objeto actual
-            Destroy(objetoAutodestruccion);
+            Destroy(gameObject);
         }
     }
 }

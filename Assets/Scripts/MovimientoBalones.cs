@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoBalones : Enemy
+public class MovimientoBalones : Enemy, IDamageable
 {
     [SerializeField] public float moveSpeed = 5f; // Velocidad de movimiento horizontal
     public float jumpHeight = 2f; // Altura del salto (parábola)
@@ -47,5 +47,7 @@ public class MovimientoBalones : Enemy
             // Si el balón ya ha saltado, destruimos el objeto
             Destroy(gameObject);
         }
+        
     }
+    
 }

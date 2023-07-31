@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class balonbasket : Enemy
+public class balonbasket : Enemy, IDamageable
 {
     // Start is called before the first frame update
     void Start()
