@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         enemyActivator = GameObject.FindObjectOfType<EnemyActivator>();
     }
 
@@ -30,9 +30,4 @@ public class Enemy : MonoBehaviour, IDamageable
             Destroy(gameObject);
         }
     }
-
-    
-
-
-
 }
