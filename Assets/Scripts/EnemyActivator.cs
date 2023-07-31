@@ -7,32 +7,42 @@ public class EnemyActivator : MonoBehaviour
 {
     [SerializeField] public Camera cam;
     [SerializeField] public float cameraOffset;
-    public GameObject[] enemies;
+    private List<GameObject> enemies = new List<GameObject>();
 
     private void Awake()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies.AddRange(enemyObjects);
     }
     private void Start()
     {
-        cam = Camera.main;
+        cam = GetComponent<Camera>();
         
 
     }
 
     private void Update()
     {
+        ActivateEnemies();
+
+    }
+    private void ActivateEnemies()
+    {
+
+        
+
+
         foreach (GameObject enemy in enemies)
         {
-            //Debug.Log("Cam Position: "+cam.transform.position.x+"Enemy Position: "+enemy.transform.position.x + "Enemy Name" + enemy.name);
-            
-            if((cam.transform.position.x + cameraOffset)> enemy.transform.position.x)
+            if ((cam.transform.position.x + cameraOffset) > enemy.transform.position.x)
             {
-                //Debug.Log(Camera.);
                 enemy.SetActive(true);
             }
         }
-
+    }
+    public void RemoveEnemy(GameObject enemyToRemove)
+    {
+        enemies.Remove(enemyToRemove);
     }
 
 }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] public Vector2 bulletDirection;
     public float bulletSpeed;
     public int bulletDamage;
     public Rigidbody2D rb;
+
+
+    private static Vector2 bulletDirection;
 
     public void Start()
     {
@@ -29,14 +31,28 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Enemy enemy = collision.collider.GetComponent<Enemy>();
-        if (enemy != null)
+        Rigidbody2D rbcol = collision.collider.GetComponent<Rigidbody2D>();
+        if (rbcol != null)
         {
-            enemy.getDamage(bulletDamage);
+            rbcol.simulated = false;
+        }
+        IDamageable damageable = collision.collider.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            Debug.Log("Bala impacta");
+            damageable.getDamage(bulletDamage);
+        }
+
+        if (rbcol != null)
+        {
+            rbcol.simulated = true;
         }
         Destroy(gameObject);
     }
-
+    public static void SetBulletDirection(Vector2 direction)
+    {
+        bulletDirection = direction.normalized;
+    }
     public void launch(float speed, int damagePoints)
     {
         bulletDamage = damagePoints;
