@@ -5,11 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] public int health;
+    public int damageAmount = 20; // Cantidad de daño que el enemigo hace al jugador.
+
     private EnemyActivator enemyActivator;
 
     private void Start()
     {
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
         enemyActivator = GameObject.FindObjectOfType<EnemyActivator>();
     }
 
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour, IDamageable
             enemyActivator.RemoveEnemy(gameObject);
         }
     }
+
     public void getDamage(int damage)
     {
         Debug.Log("Enemigo ejecuta");
@@ -29,5 +32,10 @@ public class Enemy : MonoBehaviour, IDamageable
             Debug.Log("Enemigo se destruye");
             Destroy(gameObject);
         }
+    }
+
+    public int GetDamageAmount()
+    {
+        return damageAmount; // Retorna la cantidad de daño que el enemigo hace al jugador.
     }
 }
