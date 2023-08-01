@@ -98,7 +98,7 @@ public class CharacterControler : MonoBehaviour
     private void shotBullet()
     {
         Vector2 bulletPos;
-        bulletPos.x = transform.position.x + 1f;
+        bulletPos.x = transform.position.x + 1.2f;
         bulletPos.y = transform.position.y;
         
         Instantiate(bulletObject, bulletPos, Quaternion.identity);

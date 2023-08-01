@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ObstaculoSystem : Enemy
 {
-    // Referencia al objeto que se autodestruirá
-    public GameObject objetoAutodestruccion;
-
+    
     // Método para verificar colisiones
     private void OnCollisionEnter2D(Collision2D collision)
     {

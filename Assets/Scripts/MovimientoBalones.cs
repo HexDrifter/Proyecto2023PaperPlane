@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoBalones : Enemy, IDamageable
+public class MovimientoBalones : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 5f; // Velocidad de movimiento horizontal
     public float jumpHeight = 2f; // Altura del salto (parábola)
@@ -18,10 +18,6 @@ public class MovimientoBalones : Enemy, IDamageable
     {
         initialPosition = transform.position;
         moveDirection = izquierda ? Vector2.left : Vector2.right;
-        /*
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = balonDireccion;
-        */
     }
 
     void Update()
@@ -41,11 +37,6 @@ public class MovimientoBalones : Enemy, IDamageable
             {
                 hasJumped = true;
             }
-        }
-        else
-        {
-            // Si el balón ya ha saltado, destruimos el objeto
-            Destroy(gameObject);
         }
         
     }
