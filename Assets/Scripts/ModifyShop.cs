@@ -30,6 +30,7 @@ public class ModifyShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // TEST
         money.text = "Dinero: 1000";
         maxLife.text = "Vida máxima: 100";
         shotDamage.text = "Daño disparo: 25";
