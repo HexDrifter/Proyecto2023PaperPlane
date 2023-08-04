@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Data.SqlTypes;
 
 public class ModifyShop : MonoBehaviour
 {
-
+    public Button buy;
+    public TMP_Text buyText;
     public TMP_Text money;
     public TMP_Text maxLife;
     public TMP_Text shotDamage;
@@ -24,8 +26,6 @@ public class ModifyShop : MonoBehaviour
     public TMP_Text currentBombs;
     public TMP_Text nameUpgrade;
     public TMP_Text descriptionUpgrade;
-    public TMP_Text nameUpgradeMax;
-    public TMP_Text descriptionUpgradeMax;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,8 @@ public class ModifyShop : MonoBehaviour
         shotDamage.text = "Daño disparo: 25";
         bombDamage.text = "Daño bomba: 100";
         maxBombs.text = "Máx. bombas: 3";
+        buy.interactable = false;
+        buyText.text = "MAX";
     }
 
     // Update is called once per frame
