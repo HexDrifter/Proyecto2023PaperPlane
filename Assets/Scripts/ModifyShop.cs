@@ -9,33 +9,39 @@ public class ModifyShop : MonoBehaviour
 {
     public Button buy;
     public TMP_Text buyText;
-    public TMP_Text money;
-    public TMP_Text maxLife;
-    public TMP_Text shotDamage;
-    public TMP_Text bombDamage;
-    public TMP_Text maxBombs;
-    public TMP_Text maxLifeLevel;
-    public TMP_Text maxLifeUpgrade;
-    public TMP_Text shotDamageLevel;
-    public TMP_Text shotDamageUpgrade;
-    public TMP_Text bombDamageLevel;
-    public TMP_Text bombDamageUpgrade;
-    public TMP_Text maxBombsLevel;
-    public TMP_Text maxBombsUpgrade;
-    public TMP_Text currentLife;
-    public TMP_Text currentBombs;
-    public TMP_Text nameUpgrade;
-    public TMP_Text descriptionUpgrade;
+    public TMP_Text moneyText;
+    public TMP_Text maxLifeText;
+    public TMP_Text shotDamageText;
+    public TMP_Text bombDamageText;
+    public TMP_Text maxBombsText;
+    public TMP_Text maxLifeLevelText;
+    public TMP_Text maxLifeUpgradeText;
+    public TMP_Text shotDamageLevelText;
+    public TMP_Text shotDamageUpgradeText;
+    public TMP_Text bombDamageLevelText;
+    public TMP_Text bombDamageUpgradeText;
+    public TMP_Text maxBombsLevelText;
+    public TMP_Text maxBombsUpgradeText;
+    public TMP_Text currentLifeText;
+    public TMP_Text currentBombsText;
+    public TMP_Text nameUpgradeText;
+    public TMP_Text descriptionUpgradeText;
+
+    private int money = 100000;
+    private int maxLife = 100;
+    private int shotDamage = 25;
+    private int bombDamage = 100;
+    private int maxBombs = 3;
 
     // Start is called before the first frame update
     void Start()
     {
         // TEST
-        money.text = "Dinero: 1000";
-        maxLife.text = "Vida máxima: 100";
-        shotDamage.text = "Daño disparo: 25";
-        bombDamage.text = "Daño bomba: 100";
-        maxBombs.text = "Máx. bombas: 3";
+        moneyText.text = "Dinero: " + money.ToString();
+        maxLife.text = "Vida mÃ¡xima: " + maxLife.ToString();
+        shotDamage.text = "DaÃ±o disparo: " + shotDamage.ToString();
+        bombDamage.text = "DaÃ±o bomba: " + bombDamage.ToString();
+        maxBombs.text = "MÃ¡x. bombas: " + maxBombs.ToString();
         buy.interactable = false;
         buyText.text = "MAX";
     }

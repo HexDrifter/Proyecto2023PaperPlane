@@ -4539,7 +4539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buy: {fileID: 1169695296}
   buyText: {fileID: 1815149545}
-  money: {fileID: 1402160152}
+  moneyText: {fileID: 1402160152}
   maxLife: {fileID: 1525607533}
   shotDamage: {fileID: 1553357616}
   bombDamage: {fileID: 864038610}
@@ -4556,8 +4556,6 @@ MonoBehaviour:
   currentBombs: {fileID: 157472305}
   nameUpgrade: {fileID: 1858805125}
   descriptionUpgrade: {fileID: 2085611005}
-  nameUpgradeMax: {fileID: 0}
-  descriptionUpgradeMax: {fileID: 0}
 --- !u!1 &1612893047
 GameObject:
   m_ObjectHideFlags: 0
