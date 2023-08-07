@@ -2681,15 +2681,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709653627}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
---- !u!1 &778974478
-=======
-<<<<<<< HEAD
 --- !u!1 &740602773
-=======
---- !u!1 &778974478
->>>>>>> 8a7cd0548914997f4ca4a7efdf05b92e33720228
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2697,45 +2689,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   - component: {fileID: 740602774}
   - component: {fileID: 740602776}
   - component: {fileID: 740602775}
   m_Layer: 5
   m_Name: Text (TMP)
-=======
->>>>>>> Stashed changes
-  - component: {fileID: 778974480}
-  - component: {fileID: 778974479}
-  m_Layer: 0
-  m_Name: Controlador
-<<<<<<< Updated upstream
-=======
->>>>>>> 8a7cd0548914997f4ca4a7efdf05b92e33720228
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< Updated upstream
---- !u!114 &778974479
-MonoBehaviour:
-=======
-<<<<<<< HEAD
 --- !u!224 &740602774
 RectTransform:
-=======
---- !u!114 &778974479
-MonoBehaviour:
->>>>>>> 8a7cd0548914997f4ca4a7efdf05b92e33720228
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 740602773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2752,13 +2721,10 @@ MonoBehaviour:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740602775
 MonoBehaviour:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-=======
   m_GameObject: {fileID: 740602773}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2972,33 +2938,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783041330}
   m_CullTransparentMesh: 1
-=======
->>>>>>> Stashed changes
-  m_GameObject: {fileID: 778974478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04259fc81386fc4bb02092e69dca548, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &778974480
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778974478}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 647.303, y: 14.681892, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
->>>>>>> 8a7cd0548914997f4ca4a7efdf05b92e33720228
->>>>>>> Stashed changes
 --- !u!1 &789669768
 GameObject:
   m_ObjectHideFlags: 0
@@ -6235,9 +6174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a8c99950f22204db935e991fae8b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   buy: {fileID: 1169695296}
   closePopup: {fileID: 1897263782}
   selectMaxLife: {fileID: 783041332}
@@ -6268,9 +6204,6 @@ MonoBehaviour:
   infoPanel: {fileID: 89078910}
   popup: {fileID: 2126497802}
   blockPanel: {fileID: 1555350413}
-=======
->>>>>>> 8a7cd0548914997f4ca4a7efdf05b92e33720228
->>>>>>> Stashed changes
 --- !u!1 &1612893047
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,19 +6992,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820236473}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 778974479}
-        m_TargetAssemblyTypeName: Escena, Assembly-CSharp
-        m_MethodName: CambiarEscena
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Level-1-School
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1820236473
 MonoBehaviour:
   m_ObjectHideFlags: 0
