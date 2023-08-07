@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c2e9c0a78c1a046bf07b49d0f1ae57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   moveSpeed: 5
   jumpHeight: 3
   izquierda: 1
@@ -257,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  objetoAutodestruccion: {fileID: 97800213}
+  damageAmount: 20
 --- !u!50 &97800216
 Rigidbody2D:
   serializedVersion: 4
@@ -377,6 +376,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3935785292312083988, guid: 1fc090cea03262a45ae194ce57bb13cd, type: 3}
   m_PrefabInstance: {fileID: 1368576042}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &425465500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3935785292312083989, guid: 1fc090cea03262a45ae194ce57bb13cd, type: 3}
+  m_PrefabInstance: {fileID: 1368576042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &425465501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425465500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d592a8a98d88f44da7e4554c0a7b64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerMaxHealth: 100
+  playerBombs: 0
+  money: 0
+  damageAmount: 25
+  moneyText: {fileID: 0}
 --- !u!1 &428028092
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c2e9c0a78c1a046bf07b49d0f1ae57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   moveSpeed: 5
   jumpHeight: 3
   izquierda: 1
@@ -622,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  objetoAutodestruccion: {fileID: 994006409}
+  damageAmount: 20
 --- !u!50 &994006412
 Rigidbody2D:
   serializedVersion: 4
@@ -770,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  objetoAutodestruccion: {fileID: 1041984214}
+  damageAmount: 20
 --- !u!50 &1041984216
 Rigidbody2D:
   serializedVersion: 4
@@ -918,7 +939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c2e9c0a78c1a046bf07b49d0f1ae57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   moveSpeed: 5
   jumpHeight: 6
   izquierda: 0
@@ -935,7 +955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  objetoAutodestruccion: {fileID: 1243315743}
+  damageAmount: 20
 --- !u!50 &1243315746
 Rigidbody2D:
   serializedVersion: 4
@@ -1083,7 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  objetoAutodestruccion: {fileID: 1286469967}
+  damageAmount: 20
 --- !u!50 &1286469969
 Rigidbody2D:
   serializedVersion: 4
@@ -1345,13 +1365,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 169958845}
-  chaseSpeed: 5
-  desiredDistance: 5
+  chaseSpeed: 0.5
+  desiredDistance: 8
   chaseDistance: 10
-  bulletPrefab: {fileID: 0}
-  bulletSpeed: 10
-  bulletDamage: 25
-  cooldown: 0.7
+  bulletPrefab: {fileID: 5759066552139639576, guid: a4470ccf3184bcd4093c2c0aa4c79a45, type: 3}
+  shootInterval: 3
 --- !u!50 &1583851502
 Rigidbody2D:
   serializedVersion: 4
@@ -1390,7 +1408,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1}
+    oldSize: {x: 0.64, y: 0.32}
     newSize: {x: 2, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1479,6 +1497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  damageAmount: 20
 --- !u!1 &1828113696
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,8 +29,13 @@ public class EnemyBulletController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject); // Destruir el objeto con la etiqueta "Player"
+            // Acceder al GameManager y enviar el daño al jugador
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.GetDamage(GameManager.Instance.damageAmount);
+            }
         }
+        
         Destroy(gameObject); // Destruir la bala
     }
 

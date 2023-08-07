@@ -5,7 +5,7 @@ public class EnemyNavePapel : MonoBehaviour
 {
     public Transform player;
     public float chaseSpeed = 0.5f;
-    public float desiredDistance = 5f; // Distancia deseada del jugador
+    public float desiredDistance = 8f; // Distancia deseada del jugador
     public float chaseDistance = 10f; // Distancia para comenzar a perseguir al jugador
     public GameObject bulletPrefab; // Cambiar el tipo del campo a GameObject
     public float shootInterval = 3f;

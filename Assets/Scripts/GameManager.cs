@@ -1,59 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public GameObject Player;
-    public int playerMaxHealth;
+    // Singleton instance
+    public static GameManager Instance { get; private set; }
+
+    [Header("Player Settings")]
+    public GameObject player;
+    public int playerMaxHealth = 100;
     public int playerBombs;
     public int money;
+    private int playerCurrentHealth;
+
+    [Header("UI Elements")]
+    public int damageAmount = 25;
     public TextMeshProUGUI moneyText;
-    public TextMeshProUGUI bombsText;
-    public int playerCurrentHealth;
 
     private void Awake()
     {
         Singleton();
-        DontDestroy();
-    }
-
-    private void DontDestroy()
-    {
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Singleton()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        playerCurrentHealth = playerMaxHealth;
+        UpdateHealthUI();
     }
 
     public void Update()
     {
-        updateBombs();
-    }
-
-    private void updateBombs()
-    {
-        bombsText.text = "Bombs: " + playerBombs;
     }
 
     public void UpdatePlayerHealth(int healthChange)
     {
         playerCurrentHealth += healthChange;
-
         playerCurrentHealth = Mathf.Clamp(playerCurrentHealth, 0, playerMaxHealth);
-
         UpdateHealthUI();
+
+        if (playerCurrentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     private void UpdateHealthUI()
@@ -61,22 +63,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player Health: " + playerCurrentHealth);
     }
 
-    
-    public int maxHealth = 100;
-    private int currentHealth;
-
-    private void Start()
+    public void GetDamage(int damage)
     {
-        currentHealth = maxHealth;
-    }
+        playerCurrentHealth -= damage;
+        GameManager.Instance.UpdatePlayerHealth(-damage);
 
-    public void getDamage(int damage)
-    {
-        currentHealth -= damage;
-
-        GameManager.instance.UpdatePlayerHealth(-damage);
-
-        if (currentHealth <= 0)
+        if (playerCurrentHealth <= 0)
         {
             Die();
         }
@@ -84,16 +76,15 @@ public class GameManager : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died!");
-        Destroy(gameObject);
+        SceneManager.LoadScene("Shop");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out var enemy))
+        if (other.TryGetComponent(out Enemy enemy))
         {
             int damageAmount = enemy.damageAmount;
-            getDamage(damageAmount);
+            GetDamage(damageAmount);
             Destroy(other.gameObject);
         }
     }
