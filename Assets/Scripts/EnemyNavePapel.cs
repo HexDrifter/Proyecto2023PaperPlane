@@ -1,91 +1,51 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyNavePapel : MonoBehaviour
 {
     public Transform player;
-    public float chaseSpeed = 5f;
+    public float chaseSpeed = 0.5f;
     public float desiredDistance = 5f; // Distancia deseada del jugador
     public float chaseDistance = 10f; // Distancia para comenzar a perseguir al jugador
 
-    public GameObject bulletPrefab;
-    public float bulletSpeed = 10f; // Velocidad de la bala
-    public int bulletDamage = 25; // Daño de la bala
-    public float cooldown = 0.7f; // Cooldown entre disparos
-    private bool canShoot = true;
-
     private Rigidbody2D rb;
+    private Camera mainCamera;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
     }
 
     void Update()
     {
         if (player != null)
         {
-            float distanceToPlayerX = player.position.x - transform.position.x;
-            float distanceToPlayerY = player.position.y - transform.position.y;
+            // Obtener la posición real del jugador en el mundo
+            Vector3 playerWorldPos = mainCamera.transform.TransformPoint(player.position);
 
-            float distanceToPlayer = Mathf.Sqrt(distanceToPlayerX * distanceToPlayerX + distanceToPlayerY * distanceToPlayerY);
+            // Calcular la dirección hacia el jugador
+            Vector2 directionToPlayer = playerWorldPos - transform.position;
 
-            // Persigue al jugador si está dentro de la distancia de persecución
-            if (distanceToPlayer <= chaseDistance)
+            // Verificar si el jugador está dentro de la distancia de persecución
+            if (Mathf.Abs(directionToPlayer.x) <= chaseDistance && Mathf.Abs(directionToPlayer.y) <= chaseDistance)
             {
-                ChasePlayer(distanceToPlayerX, distanceToPlayerY);
-
-                // Disparar si el cooldown ha terminado
-                if (canShoot)
-                {
-                    StartCoroutine(ShootCooldown());
-                    ShootAtPlayer();
-                }
+                ChasePlayer(directionToPlayer);
+            }
+            else
+            {
+                rb.velocity = Vector2.zero; // Detener la nave si está fuera de la distancia de persecución
             }
         }
     }
 
-    void ChasePlayer(float distanceToPlayerX, float distanceToPlayerY)
+    void ChasePlayer(Vector2 directionToPlayer)
     {
-        // Movimiento en el eje X para mantener la distancia deseada
-        if (Mathf.Abs(distanceToPlayerX) > desiredDistance)
-        {
-            float moveDirectionX = Mathf.Sign(distanceToPlayerX);
-            rb.velocity = new Vector2(moveDirectionX * chaseSpeed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(0f, rb.velocity.y);
-        }
+        // Movimiento en el eje X y Y hacia el jugador
+        float moveDirectionX = Mathf.Abs(directionToPlayer.x) > desiredDistance ? Mathf.Sign(directionToPlayer.x) : 0f;
+        float moveDirectionY = Mathf.Abs(directionToPlayer.y) > desiredDistance ? Mathf.Sign(directionToPlayer.y) : 0f;
 
-        // Movimiento en el eje Y para mantener la distancia deseada
-        if (Mathf.Abs(distanceToPlayerY) > desiredDistance)
-        {
-            float moveDirectionY = Mathf.Sign(distanceToPlayerY);
-            rb.velocity = new Vector2(rb.velocity.x, moveDirectionY * chaseSpeed);
-        }
-        else
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
-        }
-    }
-
-    void ShootAtPlayer()
-    {
-        Vector2 bulletDirection = player.position - transform.position;
-        bulletDirection = bulletDirection.normalized; // Normalizamos la dirección para asegurarnos de que tenga magnitud 1
-        Vector2 bulletSpawnPosition = (Vector2)transform.position + bulletDirection * 1f; // Distancia de 1 unidad desde la nave enemiga
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPosition, Quaternion.identity);
-        bullet.GetComponent<BulletControllerEnemy>().Launch(bulletSpeed, bulletDirection);
-    }
-
-
-    IEnumerator ShootCooldown()
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(cooldown);
-        canShoot = true;
+        rb.velocity = new Vector2(moveDirectionX * chaseSpeed, moveDirectionY * chaseSpeed);
     }
 }
