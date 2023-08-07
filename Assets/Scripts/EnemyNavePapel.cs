@@ -7,9 +7,13 @@ public class EnemyNavePapel : MonoBehaviour
     public float chaseSpeed = 0.5f;
     public float desiredDistance = 5f; // Distancia deseada del jugador
     public float chaseDistance = 10f; // Distancia para comenzar a perseguir al jugador
+    public GameObject bulletPrefab; // Cambiar el tipo del campo a GameObject
+    public float shootInterval = 3f;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
+
+    private float shootTimer = 0f;
 
     void Start()
     {
@@ -32,6 +36,7 @@ public class EnemyNavePapel : MonoBehaviour
             if (Mathf.Abs(directionToPlayer.x) <= chaseDistance && Mathf.Abs(directionToPlayer.y) <= chaseDistance)
             {
                 ChasePlayer(directionToPlayer);
+                ShootBullets(directionToPlayer.normalized);
             }
             else
             {
@@ -47,5 +52,24 @@ public class EnemyNavePapel : MonoBehaviour
         float moveDirectionY = Mathf.Abs(directionToPlayer.y) > desiredDistance ? Mathf.Sign(directionToPlayer.y) : 0f;
 
         rb.velocity = new Vector2(moveDirectionX * chaseSpeed, moveDirectionY * chaseSpeed);
+    }
+
+    void ShootBullets(Vector2 shootDirection)
+    {
+        if (Time.time >= shootTimer)
+        {
+            // Asegúrate de que el prefab se pueda instanciar
+            if (bulletPrefab != null)
+            {
+                GameObject bulletInstance = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                EnemyBulletController bulletController = bulletInstance.GetComponent<EnemyBulletController>();
+                if (bulletController != null)
+                {
+                    bulletController.Launch(shootDirection, bulletController.bulletSpeed, bulletController.bulletDamage);
+                }
+            }
+
+            shootTimer = Time.time + shootInterval;
+        }
     }
 }
