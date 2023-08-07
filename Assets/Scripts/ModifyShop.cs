@@ -75,11 +75,56 @@ public class ModifyShop : MonoBehaviour
 
     void UpdateInfo()
     {
+        TempLevelMaxLife = levelMaxLife + 1;
+        TempLevelShotDamage = levelShotDamage + 1;
+        TempLevelBombDamage = levelBombDamage + 1;
+        TempLevelMaxBombs = levelMaxBombs + 1;
+
+        TempMaxLife = maxLife + 20;
+        TempShotDamage = shotDamage + 5;
+        TempBombDamage = bombDamage + 20;
+        TempMaxBombs = maxBombs + 1;
+
         moneyText.text = "Dinero: " + money.ToString();
         maxLifeText.text = "Vida máxima: " + maxLife.ToString();
         shotDamageText.text = "Daño disparo: " + shotDamage.ToString();
         bombDamageText.text = "Daño bomba: " + bombDamage.ToString();
         maxBombsText.text = "Máx. bombas: " + maxBombs.ToString();
+
+        if (levelMaxLife > 4) {
+            maxLifeLevelText.text = "Nivel 5";
+            maxLifeUpgradeText.text = "Máximo 200";
+        }
+        else{
+            maxLifeLevelText.text = "Nivel " + levelMaxLife.ToString() + " > Nivel " + TempLevelMaxLife.ToString();
+            maxLifeUpgradeText.text = "Máximo " + maxLife.ToString() + " > Máximo " + TempMaxLife.ToString();
+        }
+        if (levelShotDamage > 4){
+            shotDamageLevelText.text = "Nivel 5";
+            shotDamageUpgradeText.text = "Daño 50";
+        }
+        else{
+            shotDamageLevelText.text = "Nivel " + levelShotDamage.ToString() + " > Nivel " + TempLevelShotDamage.ToString();
+            shotDamageUpgradeText.text = "Daño " + shotDamage.ToString() + " > Daño " + TempShotDamage.ToString();
+        }
+        if (levelBombDamage > 4){
+            bombDamageLevelText.text = "Nivel 5";
+            bombDamageUpgradeText.text = "Daño 200";
+        }
+        else{
+            bombDamageLevelText.text = "Nivel " + levelBombDamage.ToString() + " > Nivel " + TempLevelBombDamage.ToString();
+            bombDamageUpgradeText.text = "Daño " + bombDamage.ToString() + " > Daño " + TempBombDamage.ToString();
+        }
+        if (levelMaxBombs > 4){
+            maxBombsLevelText.text = "Nivel 5";
+            maxBombsUpgradeText.text = "Máximo 8";
+        }
+        else{
+            maxBombsLevelText.text = "Nivel " + levelMaxBombs.ToString() + " > Nivel " + TempLevelMaxBombs.ToString();
+            maxBombsUpgradeText.text = "Máximo " + maxBombs.ToString() + " > Máximo " + TempMaxBombs.ToString();
+        }
+        currentLifeText.text = currentLife + " / " + maxLife;
+        currentBombsText.text = currentBombs + " / " + maxBombs;
     }
     void ShowInfoPanel(string title, string description)
     {
@@ -114,8 +159,8 @@ public class ModifyShop : MonoBehaviour
         {
             buy.interactable = true;
             buyText.text = "Comprar";
-            //buy.onClick.RemoveAllListeners();
-            //buy.onClick.AddListener(UpgradeMaxLife);
+            buy.onClick.RemoveAllListeners();
+            buy.onClick.AddListener(UpgradeMaxLife);
         }
         ShowInfoPanel("Mejorar vida máxima", maxLifeInfo);
     }
@@ -151,8 +196,8 @@ public class ModifyShop : MonoBehaviour
         {
             buy.interactable = true;
             buyText.text = "Comprar";
-            //buy.onClick.RemoveAllListeners();
-            //buy.onClick.AddListener(UpgradeMaxBombs);
+            buy.onClick.RemoveAllListeners();
+            buy.onClick.AddListener(UpgradeMaxBombs);
         }
         ShowInfoPanel("Mejorar máximo de bombas", maxBombsInfo);
     }
@@ -169,6 +214,24 @@ public class ModifyShop : MonoBehaviour
         buy.onClick.AddListener(BuyUpgrade);
     }
 
+    void UpgradeMaxLife()
+    {
+        if (levelMaxLife < 5 && money >= 1000)
+        {
+            maxLife += 20;
+            levelMaxLife += 1;
+            BuyUpgrade();
+            if (levelMaxLife > 4)
+            {
+                buy.interactable = false;
+                buyText.text = "MAX";
+            }
+        }
+        else
+        {
+            BuyUpgrade();
+        }
+    }
     void UpgradeShotDamage()
     {
         if (levelShotDamage < 5 && money >= 1000)
@@ -206,67 +269,30 @@ public class ModifyShop : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
+    void UpgradeMaxBombs()
+    {
+        if (levelMaxBombs < 5 && money >= 1000)
+        {
+            maxBombs += 1;
+            levelMaxBombs += 1;
+            BuyUpgrade();
+            if (levelMaxBombs > 4)
+            {
+                buy.interactable = false;
+                buyText.text = "MAX";
+            }
+        }
+        else
+        {
+            BuyUpgrade();
+        }
+    }
+
     void Start()
     {
-        TempLevelMaxLife = levelMaxLife+1;
-        TempLevelShotDamage = levelShotDamage+1;
-        TempLevelBombDamage = levelBombDamage+1;
-        TempLevelMaxBombs = levelMaxBombs+1;
-
-        TempMaxLife = maxLife+20;
-        TempShotDamage = shotDamage+5;
-        TempBombDamage = bombDamage+20;
-        TempMaxBombs = maxBombs+1;
-
         selectPanel.SetActive(true);
         infoPanel.SetActive(false);
-
         UpdateInfo();
-
-        if (levelMaxLife > 5) {
-            maxLifeLevelText.text = "Nivel 5";
-            maxLifeUpgradeText.text = "Máximo 200";
-        }
-        else{
-            maxLifeLevelText.text = "Nivel " + levelMaxLife.ToString() + " > Nivel " + TempLevelMaxLife.ToString();
-            maxLifeUpgradeText.text = "Máximo " + maxLife.ToString() + " > Máximo " + TempMaxLife.ToString();
-        }
-        if (levelShotDamage > 5){
-            bombDamageLevelText.text = "Nivel 5";
-            bombDamageUpgradeText.text = "Daño 50";
-        }
-        else{
-            bombDamageLevelText.text = "Nivel " + levelBombDamage.ToString() + " > Nivel " + TempLevelBombDamage.ToString();
-            bombDamageUpgradeText.text = "Daño " + bombDamage.ToString() + " > Daño " + TempBombDamage.ToString();
-        }
-        if (levelBombDamage > 5){
-            shotDamageLevelText.text = "Nivel 5";
-            shotDamageUpgradeText.text = "Daño 200";
-        }
-        else{
-            shotDamageLevelText.text = "Nivel " + levelShotDamage.ToString() + " > Nivel " + TempLevelShotDamage.ToString();
-            shotDamageUpgradeText.text = "Daño " + shotDamage.ToString() + " > Daño " + TempShotDamage.ToString();
-        }
-        if (levelMaxBombs > 5){
-            maxBombsLevelText.text = "Nivel 5";
-            maxBombsUpgradeText.text = "Máximo 9";
-        }
-        else{
-            maxBombsLevelText.text = "Nivel " + levelMaxBombs.ToString() + " > Nivel " + TempLevelMaxBombs.ToString();
-            maxBombsUpgradeText.text = "Máximo " + maxBombs.ToString() + " > Máximo " + TempMaxBombs.ToString();
-        }
-        
-        currentLifeText.text = currentLife + " / " + maxLife;
-        currentBombsText.text = currentBombs + " / " + maxBombs;
-
-        //buy.interactable = false;
-        //buyText.text = "MAX";
-
-        if (levelBombDamage > 5) { 
-        
-        }
-
         selectMaxLife.onClick.AddListener(ShowMaxLifeInfo);
         selectShotDamage.onClick.AddListener(ShowShotDamageInfo);
         selectBombDamage.onClick.AddListener(ShowBombDamageInfo);
@@ -274,10 +300,8 @@ public class ModifyShop : MonoBehaviour
         selectBuyLife.onClick.AddListener(ShowBuyLifeInfo);
         selectBuyBombs.onClick.AddListener(ShowBuyBombsInfo);
         closePopup.onClick.AddListener(ClosePopup);
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateInfo();
