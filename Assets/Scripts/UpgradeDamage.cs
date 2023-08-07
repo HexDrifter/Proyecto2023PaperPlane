@@ -5,28 +5,29 @@ using UnityEngine;
 public class UpgradeShoot : MonoBehaviour
 {
     /*
-    private int levelUpgradeShot;
-    private object a9ad50b4dfafd2f4e7a3576d33873a04ff263;
-    private int levelUpgradeBomb;
+    private int levelShotDamage = 0;
+    private int levelBombDamage = 0;
+    private int shotDamage = 25;
+    private int bombDamage = 100;
 
-    public int ShotDamage { get; private set; }
-    public int BombDamage { get; private set; }
-
-    void upgradeShot(levelUpgradeShot) 
+    void UpgradeShotDamage(int levelShotDamage) 
     {
-        if (levelUpgradeShot >= 0 && levelUpgradeShot <= 4)
+        if (levelShotDamage >= 0 && levelShotDamage <= 4)
         {
-            ShotDamage = ShotDamage + 5;
-            levelUpgradeShot + 1;
+            shotDamage += 25;
+            levelShotDamage += 1;
         }
     }
-    int UpgradeShot(levelUpgradeBomb)
+    void UpgradeBombDamage(int levelBombDamage)
     {
-        if (levelUpgradeBomb >= 0 && levelUpgradeBomb <= 4)
+        if (levelBombDamage >= 0 && levelBombDamage <= 4)
         {
-            BombDamage = damage+5;
-            levelUpgradeBomb + 1;
-            levelUpgradeBomb + 1;
+            bombDamage = bombDamage + 20;
+            levelBombDamage += 1;
         }
     }*/
+    private void Start()
+    {
+        
+    }
 }
