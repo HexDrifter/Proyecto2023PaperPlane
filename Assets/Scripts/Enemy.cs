@@ -38,4 +38,18 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         return damageAmount; // Retorna la cantidad de daño que el enemigo hace al jugador.
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Acceder al GameManager y enviar el daño al jugador
+            GameManager gameManager = GameManager.Instance;
+            if (gameManager != null)
+            {
+                int enemyDamage = GetDamageAmount();
+                gameManager.GetDamage(enemyDamage);
+            }
+        }
+    }
 }
