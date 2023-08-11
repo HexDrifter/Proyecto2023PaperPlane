@@ -12,7 +12,7 @@ public class balonbasket : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(initialLaunch * speed);
+        rb.AddForce(initialLaunch*speed, ForceMode2D.Impulse);
         
     }
 
