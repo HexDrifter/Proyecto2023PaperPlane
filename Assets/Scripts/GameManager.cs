@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("UI Elements")]
     public int damageAmount = 25;
     public TextMeshProUGUI moneyText;
+    public Slider healthBar;
 
     private void Awake()
     {
@@ -42,6 +44,10 @@ public class GameManager : MonoBehaviour
         UpdateHealthUI();
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
     public void Update()
     {
     }
@@ -60,7 +66,9 @@ public class GameManager : MonoBehaviour
 
     private void UpdateHealthUI()
     {
+        
         Debug.Log("Player Health: " + playerCurrentHealth);
+        healthBar.value = playerCurrentHealth/playerMaxHealth;
     }
 
     public void GetDamage(int damage)
