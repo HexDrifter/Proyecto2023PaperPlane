@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyActivator : MonoBehaviour
 {
     [SerializeField] public Camera cam;
-    [SerializeField] public float cameraOffset;
+    [SerializeField] public float cameraOffset =12;
     private List<GameObject> enemies = new List<GameObject>();
 
     private void Awake()
